@@ -1,0 +1,41 @@
+include "/sdcard/assembly/m328pdef.inc";
+SBI DDRB,5
+ldi r16,0b00000000
+out DDRB,r16
+
+start:
+
+in r16,PIND
+mov r17,r16
+
+andi r16,0b00000100
+LSR r16
+LSR r16
+
+mov r18,r17 
+andi r18,0b00001000
+LSR r18
+LSR r18
+LSR r18
+
+
+
+mov r20,r17
+andi r20,0b00010000
+LSR r20
+LSR r20
+LSR r20
+ldi r21,0b00000001
+
+
+or r18,r20
+and r16,r18
+and r18,r21
+or r16,r18
+LSL r16
+LSL r16
+LSL r16
+LSL r16
+LSL r16
+out PORTB,r16
+rjmp start
